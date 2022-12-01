@@ -165,10 +165,7 @@ nav {
     justify-content: center;
 }
 
-.image {
-    width: 100%;
-}
-
-.image img{
-    width: 100%;
+.image{
+    width:20%;
+    height:20%;
 }

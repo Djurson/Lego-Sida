@@ -44,7 +44,7 @@
             </div>
             <div class="image">
 
-                <img src="speechbubble.png" alt="not found">
+                <img src="img/speechbubble.png" alt="not found">
 
                 <p class="imgtext">Text</p>
 

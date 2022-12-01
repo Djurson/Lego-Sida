@@ -60,6 +60,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $query = "SELECT * FROM sets WHERE (SetID LIKE '%$set%' || Setname LIKE '%$set%";
         $result = mysqli_query($connection, $query);
 
+        print("<table>\n");
+        while ($row = mysqli_fetch_array($result)){
+            $setname = $row['Setname'];
+            $setid = $row['SetID'];
+
+            print("<tr>\n");
+            print("<td>$setname</td>\n")
+            print("</tr>\n");
+        }
+
         mysqli_close($connection);
     }
 }
