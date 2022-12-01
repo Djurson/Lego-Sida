@@ -18,8 +18,8 @@
     <nav>
         <div class="header-links">
             <ul>
-                <li><a href="php/searchtest.php">Sök</a></li>
-                <li><a href="">Om oss</a></li>
+                <li><a href="index.php">Sök Test</a></li>
+                <li><a href="php/omoss.php">Om oss</a></li>
                 <li><a href="">Hur sökmotorn funkar</a></li>
             </ul>
         </div>
@@ -31,26 +31,25 @@
             <h1>SÖK EFTER LEGO SET</h1>
         </div>
         <div class="search-div">
-            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+        <form action="php/searchresult.php" method="GET">
                 <div class="search-bar">
-                    <input type="text" placeholder="Sök efter lego set" id="searchbar">
+                    <input type="text" value="" placeholder="Sök efter lego set" id="search" name="search">
                 </div>
                 <div class="search">
-                    <button type="submit"><img src="img/search_icon.png" alt=""></button>
+                    <button type="submit" value="submit"><img src="img/search_icon.png" alt=""></button>
                 </div>
             </form>
-            <div id="legoman" class="lego-character">
-                <img src="img/character_normal.png" alt="">
-            </div>
-            <div class="image">
-
-                <img src="img/speechbubble.png" alt="not found">
-
-                <p class="imgtext">Text</p>
-
+            <div class="legomanspeech">
+                <div id="speechbubble" class="hide">
+                    <p class="speechbubble">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni, ipsa.</p>
+                </div>
+                <div class="lego-character">
+                    <img id="legomandiv" src="img/Legoman.png" alt="">
+                </div>
             </div>
         </div>
     </div>
 </body>
+<script src="showspeechbubble.js"></script>
 
 </html>
