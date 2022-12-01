@@ -1,9 +1,11 @@
+<!-- http://www.student.itn.liu.se/~emidj236/Lego/Lego-Sida/LegoSida/ -->
+
 <!DOCTYPE html>
 <html lang="sv">
 
 <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="css/body.css">
+    <link rel="stylesheet" href="..css/body.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap"
@@ -33,19 +35,34 @@
             <h1>SÖK EFTER LEGO SET</h1>
         </div>
         <div class="search-div">
-            <form action="">
+            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
                 <div class="search-bar">
-                    <input type="text" placeholder="Sök efter lego set">
+                    <input type="text" placeholder="Sök efter lego set" id="searchbar">
                 </div>
                 <div class="search">
                     <button type="submit"><img src="img/search_icon.png" alt=""></button>
                 </div>
             </form>
-            <div class="lego-character">
+            <div id="legoman" class="lego-character">
                 <img src="img/character_normal.png" alt="">
             </div>
+            <div class="imageContainer">Text</div>
         </div>
     </div>
 </body>
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $set = $_POST['searchbar'];
+    $connection = mysqli_connect("mysql.itn.liu.se", "lego", "", "lego");
+    if (!$connection) {
+        die('MySQL connection error');
+    } else if ($connection) {
+        $query = "SELECT * FROM sets WHERE (SetID LIKE '%$set%' || Setname LIKE '%$set%";
+        $result = mysqli_query($connection, $query);
+
+        mysqli_close($connection);
+    }
+}
+?>
 
 </html>

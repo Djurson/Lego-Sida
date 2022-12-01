@@ -164,3 +164,11 @@ nav {
     display: flex;
     justify-content: center;
 }
+
+.image {
+    width: 100%;
+}
+
+.image img{
+    width: 100%;
+}
