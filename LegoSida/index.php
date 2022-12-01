@@ -24,14 +24,13 @@
             </ul>
         </div>
     </nav>
-    <!-- <div class="header-line"><div></div></div> -->
 
     <div class="main">
         <div class="header-text">
             <h1>SÖK EFTER LEGO SET</h1>
         </div>
         <div class="search-div">
-        <form action="php/searchresult.php" method="GET">
+            <form action="php/searchresult.php" method="GET">
                 <div class="search-bar">
                     <input type="text" value="" placeholder="Sök efter lego set" id="search" name="search">
                 </div>

@@ -37,8 +37,9 @@
         if (!$connection) {
             die('MySQL connection error');
         } else {
-            $query = "SELECT sets.Setname, sets.SetID FROM sets WHERE (sets.Setname LIKE '%$searchinput%' OR sets.SetID LIKE '%$searchinput%') LIMIT 10";
+            $query = "SELECT sets.Setname, sets.SetID FROM sets WHERE (sets.Setname LIKE '%$searchinput%' OR sets.SetID LIKE '%$searchinput%')";
             $result = mysqli_query($connection, $query);
+
 
             print("<table>");
             while ($row = mysqli_fetch_array($result)) {
