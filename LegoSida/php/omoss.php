@@ -1,19 +1,37 @@
-!
 <!doctype html>
 <html lang="sv">
 
 <head>
     <meta charset="utf-8">
+    <link rel="stylesheet" href="../css/body.css">
+    <link rel="stylesheet" href="css/body.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
 
 <body>
+    <nav>
+        <div class="header-links">
+            <ul>
+                <li><a href="../index.php">Sök Test</a></li>
+                <li><a href="php/omoss.php">Om oss</a></li>
+                <li><a href="">Hur sökmotorn funkar</a></li>
+            </ul>
+        </div>
+    </nav>
     <h1>Om oss</h1>
-    <p>Du har kommit till Om oss. Här förklarar vi vilka vi är och varför vi gjort denna sida. </p>
-    <h3>Vilka är vi</h3>
-    <p>Vi heter Emil, Jonas, Axel och Ayham. Vi är fyra studenter som studerar medieteknik vid Linköpings Universitet på
-        Campus Norrköping. Detta är ett projektarbete där vi skapat en webbsida med en sökmotor för legoset och bitar.
+    <p>Välkommen till Om oss. Här förklarar vi vilka vi är och varför vi gjort denna sida. </p>
+    <p>Vi som skapat den här webb sidan är fyra killar som heter Emil, Jonas, Axel och Ayham. Vi är studenter som
+        studerar till civilingenjörer inom medieteknik vid Linköpings Universitet på
+        Campus Norrköping. Vi gör allihop vårat första år av utbildningen...
+        Detta är ett projektarbete i kursen Elektronisk Publicering där vi skapat en webbsida med en
+        sökmotor för legoset och bitar. Sidan är gjord med hjälp av grundläggande kunskaper inom html-, css-, javascript-, php-, och sql-programmering
     </p>
-    
+
 </body>
 
 </html>

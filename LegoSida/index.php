@@ -33,6 +33,7 @@
             <form action="php/searchresult.php" method="GET">
                 <div class="search-bar">
                     <input type="text" value="" placeholder="Sök efter lego set" id="search" name="search">
+                    <input type="hidden" value="1" name="page" id="page">
                 </div>
                 <div class="search">
                     <button type="submit" value="submit"><img src="img/search_icon.png" alt=""></button>

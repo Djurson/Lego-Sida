@@ -32,17 +32,29 @@
         <?php
         $link = "http://weber.itn.liu.se/~stegu76/img.bricklink.com/";
         $searchinput = $_GET['search'];
+        $page = $_GET['page'];
 
         $connection = mysqli_connect("mysql.itn.liu.se", "lego", "", "lego");
         if (!$connection) {
             die('MySQL connection error');
         } else {
-            $query = "SELECT sets.Setname, sets.SetID FROM sets WHERE (sets.Setname LIKE '%$searchinput%' OR sets.SetID LIKE '%$searchinput%')";
-            $result = mysqli_query($connection, $query);
-
+            print('<form action="../legoset/product.php" method="GET">');
+            $query = "SELECT sets.Setname, sets.SetID FROM sets WHERE (sets.Setname LIKE '%$searchinput%' OR sets.SetID LIKE '%$searchinput%') ORDER BY LENGTH(sets.setName)";
+            $currentlimit = ($page - 1) * 25;
+            $limit = 'LIMIT '.$currentlimit.",25";
+            $result = mysqli_query($connection, $query.$limit);
+            $reusltstotal = mysqli_query($connection, $query);
 
             print("<table>");
-            while ($row = mysqli_fetch_array($result)) {
+            $numberofresults = mysqli_num_rows($reusltstotal);
+            $showingresults = $page*25;
+
+            if($showingresults > $numberofresults){
+                $showingresults = $numberofresults;
+            }
+            print("<p>Showing $showingresults out of $numberofresults results</p>");
+            
+            while (($row = mysqli_fetch_array($result))) {
                 $setid = $row['SetID'];
                 $setname = $row['Setname'];
                 $gif = $row['has_gif'];
@@ -58,13 +70,29 @@
                 }
                 $image = "<img src='$link$endlink' alt='No Image Found'>";
 
-                print("<tr>");
-                print("<td>$setname</td>");
-                print("<td>$setid</td>");
-                print("<td>$image</td>");
-                print("</tr>");
+                $buttontype = 'type="submit"';
+                $buttonvalue = 'value="'.$setid.'"';
+                $buttonname = 'name="clickedset" id="clickedset"';
+                
+                print("<tr>\n");
+                print("<button $buttontype $buttonvalue $buttonname>\n");
+                print("<p>$setname</p>\n");
+                print("<p>$setid</p>\n");
+                print("<p>$image</p>\n");
+                print("</button>\n");
+                print("</tr>\n");
             }
-            print("</table>");
+            print("</table>\n");
+            print('</form>');
+
+            print('<form method="GET">');
+
+            $nextpage = $page += 1;
+            $pagebtnvalue = 'value="'.$nextpage.'"';
+            $pagebtnname = 'name="page" id="page"';
+            print('<input type="hidden" value="'.$searchinput.'" id="search" name="search">');
+            print("<button $buttontype $pagebtnvalue $pagebtnname>Next Page</button>");
+            print('</form>');
         }
         ?>
     </div>

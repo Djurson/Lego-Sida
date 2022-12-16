@@ -1,0 +1,88 @@
+<!-- http://www.student.itn.liu.se/~emidj236/Lego/Lego-Sida/LegoSida/ -->
+
+<!DOCTYPE html>
+<html lang="sv">
+
+<head>
+    <meta charset="utf-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+
+<body>
+    <nav>
+        <div class="header-links">
+            <ul>
+                <li><a href="../index.php">Sök Test</a></li>
+                <li><a href="">Om oss</a></li>
+                <li><a href="">Hur sökmotorn funkar</a></li>
+            </ul>
+        </div>
+    </nav>
+    <!-- <div class="header-line"><div></div></div> -->
+
+    <div class="main">
+        <div class="header-text">
+            <h1>Resultat</h1>
+        </div>
+        <h1>HEJ</h1>
+        <?php
+        $set = $_GET['clickedset'];
+        $connection = mysqli_connect("mysql.itn.liu.se", "lego", "", "lego");
+        if (!$connection) {
+            die('MySQL connection error');
+        }
+        $query = "SELECT images.has_gif, images.has_jpg, inventory.ItemID, inventory.ColorID, 
+                inventory.Quantity, colors.Colorname, parts.Partname 
+                FROM inventory, colors, parts, images
+                WHERE inventory.SetID='$set' AND inventory.ItemtypeID='P' AND colors.ColorID=inventory.ColorID AND parts.PartID=inventory.ItemID 
+                AND images.ItemID=inventory.ItemID AND images.ColorID=inventory.ColorID
+                ORDER BY inventory.Quantity DESC";
+
+        $result = mysqli_query($connection, $query);
+        print("<table>\n<tr>");
+        print("<th>Quantity</th>");
+        print("<th>File name</th>");
+        print("<th>Picture</th>");
+        print("<th>Color</th>");
+        print("<th>Part name</th>");
+        print("</tr>\n");
+        while ($row = mysqli_fetch_array($result)) {
+            print("<tr>");
+            $Quantity = $row['Quantity'];
+            print("<td>$Quantity</td>");
+
+            $image = "http://weber.itn.liu.se/~stegu76/img.bricklink.com/";
+            $ItemID = $row['ItemID'];
+            $ColorID = $row['ColorID'];
+
+            if ($row['has_jpg']) {
+                $filename = "P/$ColorID/$ItemID.jpg";
+            } else if ($row['has_gif']) {
+                $filename = "P/$ColorID/$ItemID.gif";
+            } else {
+                $filename = "noimage_small.png";
+            }
+            print("<td>$filename</td>");
+            print("<td><img src=\"$image$filename\" alt=\"Part $ItemID\"/></td>");
+
+            $Colorname = $row['Colorname'];
+            print("<td>$Colorname</td>");
+
+            $Partname = $row['Partname'];
+            print("<td>$Partname</td>");
+
+            print("</tr>\n");
+        }
+        print("</table>\n");
+
+        mysqli_close($connection);
+        ?>
+    </div>
+</body>
+
+</html>
