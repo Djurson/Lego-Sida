@@ -207,3 +207,26 @@ nav {
     opacity: 0;
     transition: 0.25s;
 }
+
+.omossheader {
+    font-size: 50px;
+    background-color: rgba(48, 48, 48, 0.897);
+    color: white;
+    margin-top: 80px;
+    display: flex;
+    justify-content: center;
+}
+
+.omosstop {
+    font-size: 20px;
+    background-color: rgba(48, 48, 48, 0.897);
+    color: white;
+    display: flex;
+    justify-content: center;
+}
+
+.omossbody {
+    font-size: 20px;
+    background-color: rgba(48, 48, 48, 0.897);
+    color: white;
+}

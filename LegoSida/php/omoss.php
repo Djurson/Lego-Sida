@@ -23,9 +23,9 @@
             </ul>
         </div>
     </nav>
-    <h1>Om oss</h1>
-    <p>Välkommen till Om oss. Här förklarar vi vilka vi är och varför vi gjort denna sida. </p>
-    <p>Vi som skapat den här webb sidan är fyra killar som heter Emil, Jonas, Axel och Ayham. Vi är studenter som
+    <h1 class="omossheader">Om oss</h1>
+    <p class="omosstop">Välkommen till Om oss. Här förklarar vi vilka vi är och varför vi gjort denna sida. </p>
+    <p class="omossbody">Vi som skapat den här webb sidan är fyra killar som heter Emil, Jonas, Axel och Ayham. Vi är studenter som
         studerar till civilingenjörer inom medieteknik vid Linköpings Universitet på
         Campus Norrköping. Vi gör allihop vårat första år av utbildningen...
         Detta är ett projektarbete i kursen Elektronisk Publicering där vi skapat en webbsida med en

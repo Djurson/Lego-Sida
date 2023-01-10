@@ -43,16 +43,18 @@
             $currentlimit = ($page - 1) * 25;
             $limit = 'LIMIT '.$currentlimit.",25";
             $result = mysqli_query($connection, $query.$limit);
-            $reusltstotal = mysqli_query($connection, $query);
+            $resultstotal = mysqli_query($connection, $query);
 
             print("<table>");
-            $numberofresults = mysqli_num_rows($reusltstotal);
+            $numberofresults = mysqli_num_rows($resultstotal);
+            $pagelimit = ceil(floatval($numberofresults) / floatval(25));
             $showingresults = $page*25;
 
             if($showingresults > $numberofresults){
                 $showingresults = $numberofresults;
             }
             print("<p>Showing $showingresults out of $numberofresults results</p>");
+            print("<p> $pagelimit <p>");
             
             while (($row = mysqli_fetch_array($result))) {
                 $setid = $row['SetID'];
@@ -69,13 +71,9 @@
                     $endlink = "S/$setid.gif";
                 }
                 $image = "<img src='$link$endlink' alt='No Image Found'>";
-
-                $buttontype = 'type="submit"';
-                $buttonvalue = 'value="'.$setid.'"';
-                $buttonname = 'name="clickedset" id="clickedset"';
                 
                 print("<tr>\n");
-                print("<button $buttontype $buttonvalue $buttonname>\n");
+                print('<button type="submit" value="' . $setid.'&'.$setname . '" name="clickedset" id="clickedset"' . "\n");
                 print("<p>$setname</p>\n");
                 print("<p>$setid</p>\n");
                 print("<p>$image</p>\n");
@@ -87,11 +85,15 @@
 
             print('<form method="GET">');
 
-            $nextpage = $page += 1;
+            if($page + 1 < $pagelimit){
+                $nextpage = $page += 1;
+            } else{
+                $nextpage = $page;
+            }
             $pagebtnvalue = 'value="'.$nextpage.'"';
-            $pagebtnname = 'name="page" id="page"';
+            $pagebtnname = '';
             print('<input type="hidden" value="'.$searchinput.'" id="search" name="search">');
-            print("<button $buttontype $pagebtnvalue $pagebtnname>Next Page</button>");
+            print('<button type="submit" value="'.$nextpage. '" name="page" id="page">Next Page</button>');
             print('</form>');
         }
         ?>

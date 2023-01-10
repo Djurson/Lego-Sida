@@ -23,27 +23,25 @@
             </ul>
         </div>
     </nav>
-    <!-- <div class="header-line"><div></div></div> -->
-
     <div class="main">
-        <div class="header-text">
-            <h1>Resultat</h1>
-        </div>
-        <h1>HEJ</h1>
         <?php
-        $set = $_GET['clickedset'];
-        $connection = mysqli_connect("mysql.itn.liu.se", "lego", "", "lego");
-        if (!$connection) {
-            die('MySQL connection error');
-        }
-        $query = "SELECT images.has_gif, images.has_jpg, inventory.ItemID, inventory.ColorID, 
-                inventory.Quantity, colors.Colorname, parts.Partname 
-                FROM inventory, colors, parts, images
-                WHERE inventory.SetID='$set' AND inventory.ItemtypeID='P' AND colors.ColorID=inventory.ColorID AND parts.PartID=inventory.ItemID 
-                AND images.ItemID=inventory.ItemID AND images.ColorID=inventory.ColorID
-                ORDER BY inventory.Quantity DESC";
+        $clickedsetnameid = $_GET['clickedset'];
+        $splitnameid = explode("&", strval($clickedsetnameid));
+        $setid = $splitnameid[0];
+        $setname = $splitnameid[1];
 
-        $result = mysqli_query($connection, $query);
+        $connection = mysqli_connect("mysql.itn.liu.se", "lego", "", "lego");
+
+        $partsquantityquery = "SELECT inventory.Quantity FROM inventory WHERE inventory.SetID='$setid'";
+        $partquantityresult = mysqli_query($connection, $partsquantityquery);
+        $totalparts = 0;
+
+        while($currentpart = mysqli_fetch_array($partquantityresult)) {
+            $totalparts += $currentpart['Quantity'];
+        }
+
+        print("<h1>$setname</h1>");
+        print("<p> Total parts: $totalparts </p>");
         print("<table>\n<tr>");
         print("<th>Quantity</th>");
         print("<th>File name</th>");
@@ -51,6 +49,15 @@
         print("<th>Color</th>");
         print("<th>Part name</th>");
         print("</tr>\n");
+
+        $query = "SELECT images.has_gif, images.has_jpg, inventory.ItemID, inventory.ColorID, 
+        inventory.Quantity, colors.Colorname, parts.Partname 
+        FROM inventory, colors, parts, images
+        WHERE inventory.SetID='$setid' AND inventory.ItemtypeID='P' AND colors.ColorID=inventory.ColorID AND parts.PartID=inventory.ItemID 
+        AND images.ItemID=inventory.ItemID AND images.ColorID=inventory.ColorID
+        ORDER BY inventory.Quantity DESC";
+
+        $result = mysqli_query($connection, $query);
         while ($row = mysqli_fetch_array($result)) {
             print("<tr>");
             $Quantity = $row['Quantity'];
