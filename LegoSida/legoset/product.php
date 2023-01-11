@@ -1,10 +1,12 @@
 <!-- http://www.student.itn.liu.se/~emidj236/Lego/Lego-Sida/LegoSida/ -->
-
+<?php include("../txt/lang.txt"); ?>
 <!DOCTYPE html>
 <html lang="sv">
 
 <head>
     <meta charset="utf-8">
+    <link rel="stylesheet" href="../css/body.css">
+    <link rel="stylesheet" href="../css"
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap"
@@ -14,15 +16,9 @@
 </head>
 
 <body>
-    <nav>
-        <div class="header-links">
-            <ul>
-                <li><a href="../index.php">Sök Test</a></li>
-                <li><a href="">Om oss</a></li>
-                <li><a href="">Hur sökmotorn funkar</a></li>
-            </ul>
-        </div>
-    </nav>
+    <?php
+    include("../txt/TopMenu.txt");
+    ?>
     <div class="main">
         <?php
         $clickedsetnameid = $_GET['clickedset'];
@@ -36,7 +32,7 @@
         $partquantityresult = mysqli_query($connection, $partsquantityquery);
         $totalparts = 0;
 
-        while($currentpart = mysqli_fetch_array($partquantityresult)) {
+        while ($currentpart = mysqli_fetch_array($partquantityresult)) {
             $totalparts += $currentpart['Quantity'];
         }
 
@@ -44,7 +40,6 @@
         print("<p> Total parts: $totalparts </p>");
         print("<table>\n<tr>");
         print("<th>Quantity</th>");
-        print("<th>File name</th>");
         print("<th>Picture</th>");
         print("<th>Color</th>");
         print("<th>Part name</th>");
@@ -58,12 +53,12 @@
         ORDER BY inventory.Quantity DESC";
 
         $result = mysqli_query($connection, $query);
+        $link = "http://weber.itn.liu.se/~stegu76/img.bricklink.com/";
         while ($row = mysqli_fetch_array($result)) {
             print("<tr>");
             $Quantity = $row['Quantity'];
             print("<td>$Quantity</td>");
 
-            $image = "http://weber.itn.liu.se/~stegu76/img.bricklink.com/";
             $ItemID = $row['ItemID'];
             $ColorID = $row['ColorID'];
 
@@ -74,8 +69,7 @@
             } else {
                 $filename = "noimage_small.png";
             }
-            print("<td>$filename</td>");
-            print("<td><img src=\"$image$filename\" alt=\"Part $ItemID\"/></td>");
+            print("<td><img class='LegoPartImage' src='$link$filename' alt='Part $ItemID'/></td>");
 
             $Colorname = $row['Colorname'];
             print("<td>$Colorname</td>");
