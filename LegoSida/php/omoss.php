@@ -1,3 +1,4 @@
+<?php include("../txt/lang.txt"); ?>
 <!doctype html>
 <html lang="sv">
 
@@ -14,22 +15,18 @@
 </head>
 
 <body>
-    <nav>
-        <div class="header-links">
-            <ul>
-                <li><a href="../index.php">Sök Test</a></li>
-                <li><a href="php/omoss.php">Om oss</a></li>
-                <li><a href="">Hur sökmotorn funkar</a></li>
-            </ul>
-        </div>
-    </nav>
+    <?php
+    include("../txt/TopMenu.txt");
+    ?>
     <h1 class="omossheader">Om oss</h1>
     <p class="omosstop">Välkommen till Om oss. Här förklarar vi vilka vi är och varför vi gjort denna sida. </p>
-    <p class="omossbody">Vi som skapat den här webb sidan är fyra killar som heter Emil, Jonas, Axel och Ayham. Vi är studenter som
+    <p class="omossbody">Vi som skapat den här webb sidan är fyra killar som heter Emil, Jonas, Axel och Ayham. Vi är
+        studenter som
         studerar till civilingenjörer inom medieteknik vid Linköpings Universitet på
-        Campus Norrköping. Vi gör allihop vårat första år av utbildningen...
+        Campus Norrköping. Vi gör allihop vårat första år av fem utav utbildningen.
         Detta är ett projektarbete i kursen Elektronisk Publicering där vi skapat en webbsida med en
-        sökmotor för legoset och bitar. Sidan är gjord med hjälp av grundläggande kunskaper inom html-, css-, javascript-, php-, och sql-programmering
+        sökmotor för legoset och bitar. Sidan är gjord med hjälp av grundläggande kunskaper inom html-, css-,
+        javascript-, php-, och sql-programmering
     </p>
 
 </body>

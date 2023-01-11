@@ -229,4 +229,38 @@ nav {
     font-size: 20px;
     background-color: rgba(48, 48, 48, 0.897);
     color: white;
+    padding-top: 20px;
+    padding-left: 100px;
+    padding-right: 100px;
+    padding-bottom: 20px;
+}
+
+
+
+.SearchResultInfotext{
+    color: white;
+}
+
+.LegoSetButton{
+    padding: 120px;
+    border: 2.5px solid black;  
+}
+
+.LegoSetImage{
+width: 200%;
+height: 200%;
+
+}
+
+.PrevPageButton{
+    padding: 10px;
+    border-radius: 20%;
+
+}
+
+.NextPageButton{
+    border-radius: 20%;
+    padding: 10px;
+    
+
 }

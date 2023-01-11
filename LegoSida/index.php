@@ -1,5 +1,5 @@
 <!-- http://www.student.itn.liu.se/~emidj236/Lego/Lego-Sida/LegoSida/ -->
-
+<?php include("txt/lang.txt"); ?>
 <!DOCTYPE html>
 <html lang="sv">
 
@@ -18,9 +18,10 @@
     <nav>
         <div class="header-links">
             <ul>
-                <li><a href="index.php">Sök Test</a></li>
+                <li><a href="index.php">Sök</a></li>
                 <li><a href="php/omoss.php">Om oss</a></li>
                 <li><a href="">Hur sökmotorn funkar</a></li>
+                <li><a href="">Språk</a></li>
             </ul>
         </div>
     </nav>

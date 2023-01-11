@@ -6,7 +6,7 @@
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="../css/body.css">
-    <link rel="stylesheet" href="../css"
+    <link rel="stylesheet" href="../css/legoset.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap"
@@ -32,7 +32,7 @@
         $partquantityresult = mysqli_query($connection, $partsquantityquery);
         $totalparts = 0;
 
-        while ($currentpart = mysqli_fetch_array($partquantityresult)) {
+        while ($currentpart = mysqli_fetch_array($partquantityresult) - 1) {
             $totalparts += $currentpart['Quantity'];
         }
 
