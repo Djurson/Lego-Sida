@@ -1,10 +1,9 @@
-<nav>
-    <div class="header-links">
-        <ul>
-            <li><a href="../index.php">Sök</a></li>
-            <li><a href="omoss.php">Om oss</a></li>
-            <li><a href="">Hur sökmotorn funkar</a></li>
-            <li><a href="">Språk</a></li>
-        </ul>
-    </div>
-</nav>
+    <nav>
+        <div class="header-links">
+            <ul>
+                <li><a href="../index.php">Sök</a></li>
+                <li><a href="omoss.php">Om oss</a></li>
+                <li><a href="">Hur du söker</a></li>
+            </ul>
+        </div>
+    </nav>

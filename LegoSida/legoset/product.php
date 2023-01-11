@@ -1,5 +1,4 @@
 <!-- http://www.student.itn.liu.se/~emidj236/Lego/Lego-Sida/LegoSida/ -->
-<?php include("../txt/lang.txt"); ?>
 <!DOCTYPE html>
 <html lang="sv">
 
@@ -13,6 +12,7 @@
         rel="stylesheet">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
 </head>
 
 <body>
@@ -21,6 +21,7 @@
     ?>
     <div class="main">
         <?php
+        $link = "http://weber.itn.liu.se/~stegu76/img.bricklink.com/";
         $clickedsetnameid = $_GET['clickedset'];
         $splitnameid = explode("&", strval($clickedsetnameid));
         $setid = $splitnameid[0];
@@ -32,13 +33,33 @@
         $partquantityresult = mysqli_query($connection, $partsquantityquery);
         $totalparts = 0;
 
-        while ($currentpart = mysqli_fetch_array($partquantityresult) - 1) {
+        while ($currentpart = mysqli_fetch_array($partquantityresult)) {
             $totalparts += $currentpart['Quantity'];
         }
 
-        print("<h1>$setname</h1>");
-        print("<p> Total parts: $totalparts </p>");
-        print("<table>\n<tr>");
+        /*
+        Image
+        */
+        $connection = mysqli_connect("mysql.itn.liu.se", "lego", "", "lego");
+
+        $imagequery = "SELECT * FROM images WHERE ItemtypeID='S' AND ItemID='$setid'";
+        $imagesearch = mysqli_query($connection, $imagequery);
+        $imagevector = mysqli_fetch_array($imagesearch);
+
+        if ($imagevector['has_jpg']) {
+            $endlink = "SL/$setid.jpg";
+        } else if ($imagevector['has_gif']) {
+            $endlink = "SL/$setid.jpg";
+        }
+        $image = "<img class='LegoSetImage' src='$link$endlink' alt='No Image Found'>";
+
+        /*
+        */
+
+        print("<h1 class='SetName'>$setname</h1>");
+        print("<p class='TotalpartsText'> Total parts: $totalparts </p>");
+        print("$image");
+        print("<table class='PartsTable'>\n<tr>");
         print("<th>Quantity</th>");
         print("<th>Picture</th>");
         print("<th>Color</th>");
@@ -53,7 +74,6 @@
         ORDER BY inventory.Quantity DESC";
 
         $result = mysqli_query($connection, $query);
-        $link = "http://weber.itn.liu.se/~stegu76/img.bricklink.com/";
         while ($row = mysqli_fetch_array($result)) {
             print("<tr>");
             $Quantity = $row['Quantity'];
@@ -64,9 +84,11 @@
 
             if ($row['has_jpg']) {
                 $filename = "P/$ColorID/$ItemID.jpg";
-            } else if ($row['has_gif']) {
+            } 
+            else if ($row['has_gif']) {
                 $filename = "P/$ColorID/$ItemID.gif";
-            } else {
+            }
+            else {
                 $filename = "noimage_small.png";
             }
             print("<td><img class='LegoPartImage' src='$link$filename' alt='Part $ItemID'/></td>");
