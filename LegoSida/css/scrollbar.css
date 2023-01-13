@@ -1,0 +1,40 @@
+::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    font-style: italic;
+    color: grey;
+    opacity: 1;
+    /* Firefox */
+}
+
+:-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    font-style: italic;
+    color: grey;
+}
+
+::-ms-input-placeholder {
+    /* Microsoft Edge */
+    font-style: italic;
+    color: grey;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: rgba(26, 26, 26, 0.85);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: rgb(97, 97, 97);
+    border-radius: 4px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: rgb(116, 116, 116);
+}

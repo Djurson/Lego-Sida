@@ -1,14 +1,14 @@
 @import url('https://fonts.cdnfonts.com/css/clicky-bricks');
 
 *{
-    color: white;
+    
     padding: 0;
     margin: 0;
-    font-family: 'Rajdhani', sans-serif;
+    font-family: 'Clicky Bricks', sans-serif;
 }
 
 .SetName {
-    font-size: 4em;
+    font-size: 3em;
 }
 
 .LegoSetImage {
@@ -25,16 +25,48 @@
 }
 
 .PartsTable th, tr{
-    height: 30px;
-    width: 150px;
+    height: 40px;
+    width: 220px;
     text-align: center;
 }
 
-.PartsTable th{
+th button {
+    display: inline-block;
+    padding: 8px 8px;
+    border-radius: 10px;
     font-size: 2em;
     font-weight: 1000;
+    background-color: rgba(169, 169, 169, 0.575);
+    border: none;
+    transition: 0.5s;
+    color: black;
+    text-shadow: 5px 10px 10px rgba(0, 0, 0, 0.6),
+              -3px 10px 12px rgba(0, 0, 0, 0.6);
+    
+}
+
+th button:hover{
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(0, 0, 0, 0.25);
+}
+
+.sortarrow span{
+    color: black;
 }
 
 .PartsTable tr{
     font-weight: 800;
+    height: 90px;
+}
+
+.PartsTable td {
+    background-color: rgba(255, 255, 255, 0.822);
+    color: black;
+    border-radius: 5px;
+    padding: 8px;
+}
+
+.ErrorSetInLegoSet {
+    padding-top: 50px;
 }

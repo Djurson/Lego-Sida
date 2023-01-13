@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="utf-8">
+    <link rel="stylesheet" href="../css/scrollbar.css">
     <link rel="stylesheet" href="../css/body.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -10,14 +11,16 @@
         rel="stylesheet">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+        <link href="https://fonts.cdnfonts.com/css/clicky-bricks" rel="stylesheet">
 </head>
 
 <body>
     <?php
     include("../txt/TopMenu.txt");
     ?>
+    <h1 class="title">BRICKSTON</h1>
     <div class="main">
-        <h1 class="omossheader">Om oss</h1>
+        <h2 class="omossheader">Om oss</h2>
         <p class="omosstop">Välkommen till Om oss. Här förklarar vi vilka vi är och varför vi gjort denna sida. </p>
         <p class="omossbody">Vi som skapat den här webb sidan är fyra killar som heter Emil, Jonas, Axel och Ayham. Vi är
         studenter som
@@ -29,7 +32,7 @@
         </p>
         <div class="legomanspeech">
             <div id="speechbubble" class="hide">
-                <p class="speechbubble">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni, ipsa.</p>
+                <p class="speechbubble">Varför vara här när du kan söka?</p>
             </div>
             <div class="lego-character">
                 <img id="legomandiv" src="../img/Legoman.png" alt="">

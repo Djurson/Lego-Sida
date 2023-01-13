@@ -1,7 +1,9 @@
+@import url('https://fonts.cdnfonts.com/css/clicky-bricks');
+
 * {
     margin: 0;
     padding: 0;
-    font-family: 'Rajdhani', sans-serif;
+    font-family: 'Clicky Bricks', sans-serif;
     color: white;
 }
 
@@ -57,18 +59,10 @@ nav {
     background-color: grey;
 }
 
-.header-line {
-    padding: 0;
-    width: 100%;
-    height: 0.25vh;
-    width: 30vw;
-    background-color: white;
-    margin-left: auto;
-    margin-right: auto;
-}
-
 .main {
-    margin-top: 20vh;
+    display: flex;
+    justify-content: center;
+    margin-top: 5vh;
     padding: 5vh 5vw;
     background-color: rgba(48, 48, 48, 0.897);
     border-radius: 20px;
@@ -79,6 +73,8 @@ nav {
     align-items: center;
     flex-direction: column;
     width: 60%;
+    font-family: 'Clicky Bricks', sans-serif;
+    margin-bottom: 50px;
 }
 
 .header-text {
@@ -87,9 +83,10 @@ nav {
     justify-content: center;
     align-items: center;
     padding-bottom: 2vh;
+    font-size: 1em;
 }
 
-.header-text h1 {
+.header-text h2 {
     font-weight: 550;
     font-size: 4em;
 }
@@ -114,26 +111,6 @@ nav {
     width: 30vw;
     text-align: left;
     font-size: 1.2em;
-}
-
-::placeholder {
-    /* Chrome, Firefox, Opera, Safari 10.1+ */
-    font-style: italic;
-    color: grey;
-    opacity: 1;
-    /* Firefox */
-}
-
-:-ms-input-placeholder {
-    /* Internet Explorer 10-11 */
-    font-style: italic;
-    color: grey;
-}
-
-::-ms-input-placeholder {
-    /* Microsoft Edge */
-    font-style: italic;
-    color: grey;
 }
 
 .search {
@@ -177,7 +154,6 @@ nav {
 }
 
 .speechbubble {
-
     width: 300px;
     margin: 50px auto;
     background: white;
@@ -189,7 +165,10 @@ nav {
     position: relative;
     display: flex;
     flex-direction: row;
+    word-wrap: break-word;
+    flex-wrap: wrap;
     border-radius: 40px;
+    font-family: 'Clicky Bricks', sans-serif;
 }
 
 .speechbubble:before {
@@ -205,34 +184,31 @@ nav {
     top: 6px;
 }
 
-.hide {
-    opacity: 0;
-    transition: 0.25s;
-}
-
 .omossheader {
-    font-size: 50px;
+    font-size: 3em;
     color: white;
     display: flex;
     justify-content: center;
+    font-family: 'Clicky Bricks', sans-serif;
 }
 
 .omosstop {
-    font-size: 20px;
+    font-size: 1.25em;
     color: white;
     display: flex;
     justify-content: center;
+    font-family: 'Clicky Bricks', sans-serif;
 }
 
 .omossbody {
-    font-size: 20px;
+    font-size: 1.25em;
     color: white;
-
+    font-family: 'Clicky Bricks', sans-serif;
 }
 
-.langbtn{  
-  background-color: white;
-  list-style: none;
+.langbtn {
+    background-color: white;
+    list-style: none;
 
 }
 
@@ -240,4 +216,18 @@ nav {
     color: black;
 }
 
+.title {
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: 'Clicky Bricks', sans-serif;
+    font-size: calc(80px + 6 * ((100vw - 320px) / 680));
+    margin-top: 5vh;
+    text-decoration: solid;
 
+    text-shadow: 5px 10px 10px rgba(0, 0, 0, 0.8),
+        -4px 10px 12px rgba(0, 0, 0, 0.8);
+}
